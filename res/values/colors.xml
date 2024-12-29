@@ -1,0 +1,4 @@
+<resources>
+    <!-- ... existing colors ... -->
+    <color name="error_color">#F44336</color>
+</resources> 
