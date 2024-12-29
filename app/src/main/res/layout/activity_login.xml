@@ -2,174 +2,164 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/gradient_animated_bg">
+    android:layout_height="match_parent">
 
-    <!-- Background Animation -->
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/backgroundAnimation"
+    <!-- Background Image with Blur -->
+    <ImageView
+        android:id="@+id/backgroundImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/bg_animation"/>
+        android:scaleType="centerCrop"/>
 
-    <ScrollView
+    <!-- Shimmer Layout -->
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmerLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
-            <!-- Logo Animation -->
-            <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/logoAnimation"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_marginTop="48dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:lottie_autoPlay="true"
-                app:lottie_loop="true"
-                app:lottie_rawRes="@raw/logo_animation"/>
-
-            <com.google.android.material.card.MaterialCardView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="32dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="8dp"
-                app:layout_constraintTop_toBottomOf="@id/logoAnimation">
+                android:orientation="vertical"
+                android:padding="24dp">
 
-                <LinearLayout
+                <!-- Logo Animation -->
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/logoAnimation"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="48dp"
+                    app:lottie_autoPlay="false"
+                    app:lottie_loop="false"
+                    app:lottie_rawRes="@raw/logo_animation"/>
+
+                <!-- Login Card -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/loginCard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="24dp">
+                    android:layout_marginTop="32dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="8dp"
+                    android:alpha="0.95">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Welcome Back!"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
-                        android:textStyle="bold"/>
-
-                    <!-- Username Input -->
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/usernameLayout"
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:hint="Username"
-                        app:startIconDrawable="@drawable/ic_person">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/usernameInput"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="text"/>
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <!-- Password Input -->
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/passwordLayout"
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:hint="Password"
-                        app:endIconMode="password_toggle"
-                        app:startIconDrawable="@drawable/ic_lock">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/passwordInput"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="textPassword"/>
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <!-- Remember Me & Forgot Password -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:orientation="horizontal">
+                        android:orientation="vertical"
+                        android:padding="24dp">
 
-                        <com.google.android.material.checkbox.MaterialCheckBox
-                            android:id="@+id/rememberMe"
-                            android:layout_width="wrap_content"
+                        <!-- Username Input -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/usernameLayout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Remember me"/>
+                            android:hint="Username"
+                            app:startIconDrawable="@drawable/ic_person">
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"/>
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/usernameInput"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"/>
 
-                        <com.google.android.material.textview.MaterialTextView
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <!-- Password Input -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/passwordLayout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:hint="Password"
+                            app:endIconMode="password_toggle"
+                            app:startIconDrawable="@drawable/ic_lock">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/passwordInput"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="textPassword"/>
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <!-- Login Button with Progress -->
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="24dp">
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/loginButton"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="12dp"
+                                android:text="Login"
+                                app:cornerRadius="8dp"/>
+
+                            <ProgressBar
+                                android:id="@+id/progressBar"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_gravity="center"
+                                android:visibility="gone"/>
+
+                        </FrameLayout>
+
+                        <!-- Forgot Password -->
+                        <TextView
                             android:id="@+id/forgotPassword"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="16dp"
                             android:text="Forgot Password?"
                             android:textColor="?colorPrimary"/>
 
                     </LinearLayout>
 
-                    <!-- Login Button -->
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/loginButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:padding="12dp"
-                        android:text="Login"
-                        app:cornerRadius="8dp"/>
+                </androidx.cardview.widget.CardView>
 
-                    <!-- Social Login -->
+                <!-- Social Login Buttons -->
+                <LinearLayout
+                    android:id="@+id/socialButtonsLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Or continue with"/>
+
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
 
-                        <TextView
+                        <com.google.android.material.button.MaterialButton
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Or continue with"/>
+                            android:layout_marginEnd="8dp"
+                            app:icon="@drawable/ic_google"/>
 
-                        <LinearLayout
+                        <com.google.android.material.button.MaterialButton
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:orientation="horizontal">
-
-                            <com.google.android.material.button.MaterialButton
-                                style="@style/Widget.Material3.Button.OutlinedButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="8dp"
-                                app:icon="@drawable/ic_google"
-                                app:iconGravity="textStart"/>
-
-                            <com.google.android.material.button.MaterialButton
-                                style="@style/Widget.Material3.Button.OutlinedButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                app:icon="@drawable/ic_facebook"
-                                app:iconGravity="textStart"/>
-
-                        </LinearLayout>
+                            app:icon="@drawable/ic_facebook"/>
 
                     </LinearLayout>
 
@@ -177,8 +167,8 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="24dp">
+                        android:layout_marginTop="24dp"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -197,10 +187,10 @@
 
                 </LinearLayout>
 
-            </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
 
-    </ScrollView>
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout> 
